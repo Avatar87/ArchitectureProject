@@ -44,6 +44,15 @@ namespace TestProject.Tests
         public void ACoefficientIsZero_ThrowsException()
         {
             Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(0, 2, 1));
+            Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(1e-325, 2, 1));
+        }
+
+        [Test]
+        public void NonNumericCoefficients_ThrowsException()
+        {
+            Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(double.NaN, double.NaN, double.NaN));
+            Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity));
+            Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity));
         }
     }
 }

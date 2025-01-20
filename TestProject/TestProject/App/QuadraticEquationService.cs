@@ -12,6 +12,16 @@
                 throw new ArgumentException();
             }
 
+            if (double.IsNaN(a) || double.IsNaN(b) || double.IsNaN(c))
+            {
+                throw new ArgumentException();
+            }
+
+            if (double.IsInfinity(a) || double.IsInfinity(b) || double.IsInfinity(c))
+            {
+                throw new ArgumentException();
+            }
+
             if (discr < 0)
             {
                 return new double[0];
