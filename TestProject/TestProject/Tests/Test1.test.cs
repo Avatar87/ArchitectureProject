@@ -30,5 +30,14 @@ namespace TestProject.Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void DiscriminantZero_OneRoot()
+        {
+            double[] result = _quadraticEquationService.Solve(1, 2, 1);
+            double[] expected = [-1];
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }

@@ -17,8 +17,11 @@
                 var root2 = (-b - Math.Sqrt(discr)) / 2 * a;
                 return [root1, root2];
             }
-
-            return roots;
+            else
+            {
+                var root = -b / 2 * a;
+                return [root];
+            }
         }
     }
 }
