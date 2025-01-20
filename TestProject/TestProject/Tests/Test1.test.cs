@@ -39,5 +39,11 @@ namespace TestProject.Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void ACoefficientIsZero_ThrowsException()
+        {
+            Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(0, 2, 1));
+        }
     }
 }
