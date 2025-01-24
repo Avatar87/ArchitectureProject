@@ -45,6 +45,7 @@ namespace TestProject.Tests
         {
             Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(0, 2, 1));
             Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(1e-325, 2, 1));
+            Assert.Throws<ArgumentException>(() => _quadraticEquationService.Solve(1e-8, 2, 1, 1e-7));
         }
 
         [Test]
