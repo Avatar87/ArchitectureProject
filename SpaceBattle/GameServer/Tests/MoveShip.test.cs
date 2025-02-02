@@ -1,5 +1,4 @@
-﻿using GameServer.Enums;
-using GameServer.GameLogic;
+﻿using GameServer.GameLogic;
 using GameServer.Models;
 using NUnit.Framework;
 
@@ -11,7 +10,7 @@ namespace GameServer.Tests
         [Test]
         public void CorrectMove()
         {
-            SpaceShip ship = new SpaceShip(new Point(12, 5), new Vector(-7, 3), Position.Up);
+            SpaceShip ship = new SpaceShip(new Point(12, 5), new Vector(-7, 3), null, null);
             Move moveCommand = new Move(ship);
             moveCommand.Execute();
             Point? newLocation = ship.GetLocation();
@@ -22,7 +21,7 @@ namespace GameServer.Tests
         [Test]
         public void IncorrectMove_UnableToGetLocation()
         {
-            SpaceShip ship = new SpaceShip(null, new Vector(1, 3), Position.Up);
+            SpaceShip ship = new SpaceShip(null, new Vector(1, 3), null, null);
             Move moveCommand = new Move(ship);
             Assert.Throws<NullReferenceException>(moveCommand.Execute);
         }
@@ -30,7 +29,7 @@ namespace GameServer.Tests
         [Test]
         public void IncorrectMove_UnableToGetVelocity()
         {
-            SpaceShip ship = new SpaceShip(new Point(5, 5), null, Position.Up);
+            SpaceShip ship = new SpaceShip(new Point(5, 5), null, null, null);
             Move moveCommand = new Move(ship);
             Assert.Throws<NullReferenceException>(moveCommand.Execute);
         }
@@ -38,7 +37,7 @@ namespace GameServer.Tests
         [Test]
         public void IncorrectMove_UnableToChangePosition()
         {
-            SpaceShip ship = new SpaceShip(new Point(1, 2), new Vector(-1, -3), Position.Up);
+            SpaceShip ship = new SpaceShip(new Point(1, 2), new Vector(-1, -3), null, null);
             Move moveCommand = new Move(ship);
             Assert.Throws<ArgumentException>(moveCommand.Execute);
         }

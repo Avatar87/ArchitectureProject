@@ -1,5 +1,4 @@
-﻿using GameServer.Enums;
-using GameServer.Interfaces;
+﻿using GameServer.Interfaces;
 
 namespace GameServer.Models
 {
@@ -7,13 +6,15 @@ namespace GameServer.Models
     {
         private Point _location { get; set; }
         private Vector _velocity { get; set; }
-        private Position _position { get; set; }
+        private Angle _angle { get; set; }
+        private Angle _angularVelocity { get; set; }
 
-        public SpaceShip(Point location, Vector velocity, Position position)
+        public SpaceShip(Point location, Vector velocity, Angle angle, Angle angularVelocity)
         {
             _location = location;
             _velocity = velocity;
-            _position = position;
+            _angle = angle;
+            _angularVelocity = angularVelocity;
         }
 
         public Point GetLocation()
@@ -30,14 +31,17 @@ namespace GameServer.Models
             return _velocity;
         }
 
-        public Position GetPosition()
+        public Angle GetAngle()
         {
-            return _position;
+            return _angle;
         }
-
-        public void SetPosition(Position newPosition)
+        public void SetAngle(Angle angle)
         {
-            _position = newPosition;
+            _angle = angle;
+        }
+        public Angle GetAngularVelocity()
+        {
+            return _angularVelocity;
         }
     }
 }

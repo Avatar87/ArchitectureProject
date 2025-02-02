@@ -1,5 +1,4 @@
-﻿using GameServer.Enums;
-using GameServer.Interfaces;
+﻿using GameServer.Interfaces;
 
 namespace GameServer.GameLogic
 {
@@ -12,28 +11,9 @@ namespace GameServer.GameLogic
             _obj = o;
         }
 
-        public void Execute(Direction d)
+        public void Execute()
         {
-            Position newPosition = Position.Undefined;
-            switch (_obj.GetPosition())
-            {
-                case Position.Up:
-                    newPosition = d == Direction.Clockwise ? Position.Right : Position.Left;
-                    break;
-                case Position.Down:
-                    newPosition = d == Direction.Clockwise ? Position.Left : Position.Right;
-                    break;
-                case Position.Right:
-                    newPosition = d == Direction.Clockwise ? Position.Down : Position.Up;
-                    break;
-                case Position.Left:
-                    newPosition = d == Direction.Clockwise ? Position.Up : Position.Down;
-                    break;
-                default:
-                    throw new Exception("unable to get position!");
-            }
-
-            _obj.SetPosition(newPosition);
+            _obj.SetAngle(_obj.GetAngle() + _obj.GetAngularVelocity());
         }
     }
 }

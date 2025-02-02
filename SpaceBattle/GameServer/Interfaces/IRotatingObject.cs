@@ -1,11 +1,13 @@
-﻿using GameServer.Enums;
+﻿using GameServer.Models;
 
 namespace GameServer.Interfaces
 {
     public interface IRotatingObject
     {
-        public Position GetPosition();
+        public Angle GetAngularVelocity();
 
-        public void SetPosition(Position newPosition);
+        public void SetAngle(Angle angle);
+
+        public Angle GetAngle();
     }
 }
