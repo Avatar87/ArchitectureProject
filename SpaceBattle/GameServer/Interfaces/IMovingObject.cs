@@ -4,10 +4,10 @@ namespace GameServer.Interfaces
 {
     public interface IMovingObject
     {
-        public Point GetLocation();
+        public Point Location { get; set; }
 
         public void SetLocation(Point newLocation);
 
-        public Vector GetVelocity();
+        public Vector Velocity { get; }
     }
 }

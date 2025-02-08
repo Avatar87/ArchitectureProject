@@ -1,4 +1,4 @@
-﻿using GameServer.GameLogic;
+﻿using GameServer.GameLogic.Commands;
 using GameServer.Models;
 using NUnit.Framework;
 
@@ -13,7 +13,7 @@ namespace GameServer.Tests
             SpaceShip ship = new SpaceShip(new Point(12, 5), new Vector(-7, 3), null, null);
             Move moveCommand = new Move(ship);
             moveCommand.Execute();
-            Point? newLocation = ship.GetLocation();
+            Point? newLocation = ship.Location;
             Assert.That(newLocation.X, Is.EqualTo(5));
             Assert.That(newLocation.Y, Is.EqualTo(8));
         }
