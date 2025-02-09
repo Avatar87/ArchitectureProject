@@ -8,6 +8,8 @@ namespace GameServer.Models
         public Vector Velocity { get; }
         public Angle Angle { get; set; }
         public Angle AngularVelocity { get; set; }
+        public int Fuel { get; set; }
+        public int BurnFuelRate { get; set; }
 
         public SpaceShip(Point location, Vector velocity, Angle angle, Angle angularVelocity)
         {

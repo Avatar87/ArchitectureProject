@@ -2,10 +2,10 @@
 using GameServer.Models;
 using NUnit.Framework;
 
-namespace GameServer.Tests
+namespace GameServer.Tests.Commands
 {
     [TestFixture]
-    public class MoveShip
+    public class MoveTests
     {
         [Test]
         public void CorrectMove()
