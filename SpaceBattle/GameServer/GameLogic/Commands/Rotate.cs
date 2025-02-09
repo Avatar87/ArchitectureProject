@@ -1,8 +1,8 @@
 ﻿using GameServer.Interfaces;
 
-namespace GameServer.GameLogic
+namespace GameServer.GameLogic.Commands
 {
-    public class Rotate
+    public class Rotate : ICommand
     {
         private IRotatingObject _obj;
 
@@ -13,7 +13,7 @@ namespace GameServer.GameLogic
 
         public void Execute()
         {
-            _obj.SetAngle(_obj.GetAngle() + _obj.GetAngularVelocity());
+            _obj.Angle = (_obj.Angle + _obj.AngularVelocity);
         }
     }
 }

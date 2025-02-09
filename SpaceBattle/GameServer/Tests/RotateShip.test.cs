@@ -1,4 +1,4 @@
-﻿using GameServer.GameLogic;
+﻿using GameServer.GameLogic.Commands;
 using GameServer.Models;
 using NUnit.Framework;
 
@@ -13,7 +13,7 @@ namespace GameServer.Tests
             SpaceShip ship = new SpaceShip(new Point(12, 5), new Vector(-7, 3), new Angle(5, 20), new Angle(1, 20));
             Rotate rotateCommand = new Rotate(ship);
             rotateCommand.Execute();
-            Angle newAngle = ship.GetAngle();
+            Angle newAngle = ship.Angle;
             Assert.That(newAngle, Is.EqualTo(new Angle(6, 20)));
         }
 
