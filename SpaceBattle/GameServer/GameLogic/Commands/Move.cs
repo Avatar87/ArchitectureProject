@@ -19,7 +19,7 @@ namespace GameServer.GameLogic.Commands
             {
                 throw new ArgumentException("unable to move out of field!");
             }
-            _obj.SetLocation(newLocation);
+            _obj.Location = newLocation;
         }
     }
 }
