@@ -3,9 +3,9 @@
     public class Angle
     {
         sbyte _d;
-        sbyte _n;
+        int _n;
 
-        public Angle(sbyte d, sbyte n)
+        public Angle(sbyte d, int n = 360)
         {
             if (_d >= n)
             {
@@ -57,6 +57,11 @@
         public override int GetHashCode()
         {
             return (((double)_d) / _n * 360).GetHashCode();
+        }
+
+        public double ToRadians()
+        {
+            return _d * Math.PI / 180;
         }
     }
 }

@@ -6,8 +6,10 @@ namespace GameServer.Interfaces
     {
         public Point Location { get; set; }
 
-        public void SetLocation(Point newLocation);
-
         public Vector Velocity { get; }
+
+        public int Fuel { get; set; }
+
+        public int BurnFuelRate { get; set; }
     }
 }

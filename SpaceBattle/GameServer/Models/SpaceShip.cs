@@ -5,9 +5,11 @@ namespace GameServer.Models
     public class SpaceShip : IMovingObject, IRotatingObject
     {
         public Point Location { get; set; }
-        public Vector Velocity { get; }
+        public Vector Velocity { get; set; }
         public Angle Angle { get; set; }
         public Angle AngularVelocity { get; set; }
+        public int Fuel { get; set; }
+        public int BurnFuelRate { get; set; }
 
         public SpaceShip(Point location, Vector velocity, Angle angle, Angle angularVelocity)
         {
