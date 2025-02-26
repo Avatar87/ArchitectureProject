@@ -63,6 +63,30 @@ namespace GameServer.Tests.Infrastructure.Scopes
             thread2.Join();
         }
 
+        [Test]
+        public void Different_Threads_Have_Different_Dependencies()
+        {
+            Thread thread1 = new Thread(() =>
+            {
+                var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
+                Ioc.Resolve<ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
+                Ioc.Resolve<ICommand>("IoC.Register", "someDependency", (object[] args) => (object)1).Execute();
+                Assert.That(1, Is.EqualTo(Ioc.Resolve<int>("someDependency")));
+            });
+
+            Thread thread2 = new Thread(() =>
+            {
+                var iocScope = Ioc.Resolve<object>("IoC.Scope.Create");
+                Ioc.Resolve<ICommand>("IoC.Scope.Current.Set", iocScope).Execute();
+                Assert.Throws<Exception>(() => Ioc.Resolve<int>("someDependency"));
+            });
+
+            thread1.Start();
+            thread1.Join();
+            thread2.Start();
+            thread2.Join();
+        }
+
         [TearDown]
         public void Cleanup()
         {
