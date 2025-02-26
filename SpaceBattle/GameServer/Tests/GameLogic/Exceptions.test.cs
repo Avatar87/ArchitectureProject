@@ -6,7 +6,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Concurrent;
 
-namespace GameServer.Tests
+namespace GameServer.Tests.GameLogic
 {
     [TestFixture]
     public class Exceptions
@@ -15,8 +15,8 @@ namespace GameServer.Tests
         public void CorrectEnqueueCommands_SingleRetry()
         {
             BlockingCollection<ICommand> queue = new BlockingCollection<ICommand>(100);
-            ExceptionHandler.Register(typeof(Move), typeof(ArgumentException), (ICommand cmd, Exception ex) => new Retry(cmd));
-            ExceptionHandler.Register(typeof(Retry), typeof(ArgumentException), (ICommand cmd, Exception ex) => new WriteToLog(ex));
+            ExceptionHandler.Register(typeof(Move), typeof(ArgumentException), (cmd, ex) => new Retry(cmd));
+            ExceptionHandler.Register(typeof(Retry), typeof(ArgumentException), (cmd, ex) => new WriteToLog(ex));
 
             var obj = new Mock<IMovingObject>();
             obj.Setup(s => s.Location).Returns(new Point(1, 2));
@@ -47,9 +47,9 @@ namespace GameServer.Tests
         public void CorrectEnqueueCommands_DoubleRetry()
         {
             BlockingCollection<ICommand> queue = new BlockingCollection<ICommand>(100);
-            ExceptionHandler.Register(typeof(Move), typeof(ArgumentException), (ICommand cmd, Exception ex) => new Retry(cmd));
-            ExceptionHandler.Register(typeof(Retry), typeof(ArgumentException), (ICommand cmd, Exception ex) => new RetryTwice(cmd));
-            ExceptionHandler.Register(typeof(RetryTwice), typeof(ArgumentException), (ICommand cmd, Exception ex) => new WriteToLog(ex));
+            ExceptionHandler.Register(typeof(Move), typeof(ArgumentException), (cmd, ex) => new Retry(cmd));
+            ExceptionHandler.Register(typeof(Retry), typeof(ArgumentException), (cmd, ex) => new RetryTwice(cmd));
+            ExceptionHandler.Register(typeof(RetryTwice), typeof(ArgumentException), (cmd, ex) => new WriteToLog(ex));
 
             var obj = new Mock<IMovingObject>();
             obj.Setup(s => s.Location).Returns(new Point(1, 2));

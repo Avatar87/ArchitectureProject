@@ -5,7 +5,7 @@ using GameServer.Models;
 using Moq;
 using NUnit.Framework;
 
-namespace GameServer.Tests.Commands
+namespace GameServer.Tests.GameLogic.Commands
 {
     [TestFixture]
     public class MacroCommandtests
