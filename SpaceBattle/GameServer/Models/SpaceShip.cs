@@ -4,6 +4,7 @@ namespace GameServer.Models
 {
     public class SpaceShip : IMovingObject, IRotatingObject
     {
+        public Guid Id { get; set; }
         public Point Location { get; set; }
         public Vector Velocity { get; set; }
         public Angle Angle { get; set; }
@@ -13,6 +14,7 @@ namespace GameServer.Models
 
         public SpaceShip(Point location, Vector velocity, Angle angle, Angle angularVelocity)
         {
+            Id = Guid.NewGuid();
             Location = location;
             Velocity = velocity;
             Angle = angle;
