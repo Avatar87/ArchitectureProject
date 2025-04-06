@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="2.8.0" />
     <PackageReference Include="lz4net" Version="1.0.15.93" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
@@ -20,6 +21,10 @@
     </PackageReference>
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
     <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuthServer\AuthServer.csproj" />
   </ItemGroup>
 
 </Project>
