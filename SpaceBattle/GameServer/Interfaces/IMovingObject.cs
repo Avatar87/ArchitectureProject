@@ -2,7 +2,7 @@
 
 namespace GameServer.Interfaces
 {
-    public interface IMovingObject
+    public interface IMovingObject : IObject
     {
         public Point Location { get; set; }
 
